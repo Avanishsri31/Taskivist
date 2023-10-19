@@ -15,7 +15,7 @@ todos=[{'title':'class_start','desc':'1:25'}, {'title':'class_end','desc':'3:05'
 def greet():
     return "PSIT 4A 4B , iys fastapi time"
 
-
+# List of all the todos
 @app.get('/api/v1/todos')
 def getAllTodos():
     return todos
@@ -29,6 +29,7 @@ def getTodoByTitle(title: str):
 
     return result_todo
 
+# Add a new todo to the list
 @app.post('/api/v1/todos')
 def createTodo(todo: dict):
     todos.append(todo)
@@ -37,6 +38,7 @@ def createTodo(todo: dict):
         'message': 'todo has been added'
     }
 
+# Delete a specific todo
 @app.delete('/api/v1/todos')
 def deleteTodo(title: str):
     result_todo = {}
@@ -52,6 +54,7 @@ def deleteTodo(title: str):
         'message': 'todo could not be found'
     }
 
+# Update any todo
 @app.put('/api/v1/todos/{title}/{desc}')
 def updateTodo(title: str,desc: str):
     for todo in todos:
